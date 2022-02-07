@@ -1,5 +1,7 @@
 # Terrible
 
+[![gh-actions](https://github.com/terriblefinance/server/workflows/Continuous%20Integration/badge.svg)](https://github.com/terriblefinance/server/actions?workflow=Continuous+Integration)
+
 To start your Phoenix server:
 
   * Install dependencies with `mix deps.get`
