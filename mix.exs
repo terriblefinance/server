@@ -33,6 +33,7 @@ defmodule Terrible.MixProject do
   # Type `mix help deps` for examples and options.
   defp deps do
     [
+      {:credo, "1.6.3", only: [:dev, :test], runtime: false},
       {:ecto_sql, "3.7.2"},
       {:esbuild, "0.4.0", runtime: Mix.env() == :dev},
       {:gettext, "0.19.1"},
@@ -60,7 +61,8 @@ defmodule Terrible.MixProject do
       "ecto.setup": ["ecto.create", "ecto.migrate", "run priv/repo/seeds.exs"],
       "ecto.reset": ["ecto.drop", "ecto.setup"],
       test: ["ecto.create --quiet", "ecto.migrate --quiet", "test"],
-      "assets.deploy": ["esbuild default --minify", "phx.digest"]
+      "assets.deploy": ["esbuild default --minify", "phx.digest"],
+      lint: ["format", "credo"]
     ]
   end
 end
