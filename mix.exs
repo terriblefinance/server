@@ -5,7 +5,7 @@ defmodule Terrible.MixProject do
     [
       app: :terrible,
       version: "0.1.0",
-      elixir: "~> 1.12",
+      elixir: "1.13.2",
       elixirc_paths: elixirc_paths(Mix.env()),
       compilers: [:gettext] ++ Mix.compilers(),
       start_permanent: Mix.env() == :prod,
@@ -33,18 +33,18 @@ defmodule Terrible.MixProject do
   # Type `mix help deps` for examples and options.
   defp deps do
     [
-      {:phoenix, "~> 1.6.6"},
-      {:phoenix_ecto, "~> 4.4"},
-      {:ecto_sql, "~> 3.6"},
-      {:postgrex, ">= 0.0.0"},
-      {:phoenix_live_dashboard, "~> 0.6"},
-      {:esbuild, "~> 0.3", runtime: Mix.env() == :dev},
-      {:swoosh, "~> 1.3"},
-      {:telemetry_metrics, "~> 0.6"},
-      {:telemetry_poller, "~> 1.0"},
-      {:gettext, "~> 0.18"},
-      {:jason, "~> 1.2"},
-      {:plug_cowboy, "~> 2.5"}
+      {:ecto_sql, "3.7.2"},
+      {:esbuild, "0.4.0", runtime: Mix.env() == :dev},
+      {:gettext, "0.19.1"},
+      {:jason, "1.3.0"},
+      {:phoenix, "1.6.6"},
+      {:phoenix_ecto, "4.4.0"},
+      {:phoenix_live_dashboard, "0.6.4"},
+      {:plug_cowboy, "2.5.2"},
+      {:postgrex, "0.16.1"},
+      {:swoosh, "1.6.2"},
+      {:telemetry_metrics, "0.6.1"},
+      {:telemetry_poller, "1.0.0"}
     ]
   end
 
