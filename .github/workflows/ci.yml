@@ -93,6 +93,51 @@ jobs:
       - name: Run Format Checker
         run: mix format --check-formatted
 
+  credo:
+    name: Code Quality Check
+    runs-on: ubuntu-latest
+    services:
+      db:
+        image: postgres
+        env:
+          POSTGRES_PASSWORD: postgres
+        ports: ['5432:5432']
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+    strategy:
+      matrix:
+        otp: [24.2.1]
+        elixir: [1.13.2]
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Install Elixir
+        uses: erlef/setup-beam@v1
+        with:
+          otp-version: ${{ matrix.otp }}
+          elixir-version: ${{ matrix.elixir }}
+
+      - name: Retrieve Dependencies Cache
+        uses: actions/cache@v1
+        id: mix-cache
+        with:
+          path: deps
+          key: ${{ runner.os }}-${{ matrix.otp }}-${{ matrix.elixir }}-mix-${{ hashFiles(format('{0}{1}', github.workspace, '/mix.lock')) }}
+
+      - name: Install Dependencies
+        if: steps.mix-cache.outputs.cache-hit != 'true'
+        run: |
+          mix local.rebar --force
+          mix local.hex --force
+          mix deps.get
+
+      - name: Run Format Checker
+        run: mix credo
+
   dialyzer:
     name: Dialyzer
     runs-on: ubuntu-latest
