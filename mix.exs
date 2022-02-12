@@ -10,7 +10,10 @@ defmodule Terrible.MixProject do
       compilers: [:gettext] ++ Mix.compilers(),
       start_permanent: Mix.env() == :prod,
       aliases: aliases(),
-      deps: deps()
+      deps: deps(),
+      dialyzer: [
+        plt_file: {:no_warn, "priv/plts/dialyzer.plt"}
+      ]
     ]
   end
 
@@ -34,6 +37,7 @@ defmodule Terrible.MixProject do
   defp deps do
     [
       {:credo, "1.6.3", only: [:dev, :test], runtime: false},
+      {:dialyxir, "1.1.0", only: [:dev, :test], runtime: false},
       {:ecto_sql, "3.7.2"},
       {:esbuild, "0.4.0", runtime: Mix.env() == :dev},
       {:gettext, "0.19.1"},
