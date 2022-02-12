@@ -1,0 +1,13 @@
+{
+  "skip_files": [
+    "lib/terrible.ex",
+    "lib/terrible_web.ex",
+    "lib/terrible/application.ex",
+    "lib/terrible/repo.ex",
+    "lib/terrible_web/endpoint.ex",
+    "lib/terrible_web/gettext.ex",
+    "lib/terrible_web/router.ex",
+    "lib/terrible_web/telemetry.ex",
+    "test/support"
+  ]
+}

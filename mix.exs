@@ -13,6 +13,13 @@ defmodule Terrible.MixProject do
       deps: deps(),
       dialyzer: [
         plt_file: {:no_warn, "priv/plts/dialyzer.plt"}
+      ],
+      test_coverage: [tool: ExCoveralls],
+      preferred_cli_env: [
+        coveralls: :test,
+        "coveralls.detail": :test,
+        "coveralls.post": :test,
+        "coveralls.html": :test
       ]
     ]
   end
@@ -40,6 +47,7 @@ defmodule Terrible.MixProject do
       {:dialyxir, "1.1.0", only: [:dev, :test], runtime: false},
       {:ecto_sql, "3.7.2"},
       {:esbuild, "0.4.0", runtime: Mix.env() == :dev},
+      {:excoveralls, "0.14.4", only: :test},
       {:gettext, "0.19.1"},
       {:jason, "1.3.0"},
       {:phoenix, "1.6.6"},
