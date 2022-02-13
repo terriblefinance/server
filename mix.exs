@@ -43,10 +43,14 @@ defmodule Terrible.MixProject do
   # Type `mix help deps` for examples and options.
   defp deps do
     [
+      {:commanded, "1.3.1"},
+      {:commanded_ecto_projections, "1.2.1"},
+      {:commanded_eventstore_adapter, "1.2.0"},
       {:credo, "1.6.3", only: [:dev, :test], runtime: false},
       {:dialyxir, "1.1.0", only: [:dev, :test], runtime: false},
       {:ecto_sql, "3.7.2"},
       {:esbuild, "0.4.0", runtime: Mix.env() == :dev},
+      {:eventstore, "1.3.2"},
       {:excoveralls, "0.14.4", only: :test},
       {:gettext, "0.19.1"},
       {:jason, "1.3.0"},
@@ -70,9 +74,21 @@ defmodule Terrible.MixProject do
   defp aliases do
     [
       setup: ["deps.get", "ecto.setup"],
-      "ecto.setup": ["ecto.create", "ecto.migrate", "run priv/repo/seeds.exs"],
+      "ecto.setup": [
+        "ecto.create",
+        "ecto.migrate",
+        "event_store.create",
+        "event_store.init",
+        "run priv/repo/seeds.exs"
+      ],
       "ecto.reset": ["ecto.drop", "ecto.setup"],
-      test: ["ecto.create --quiet", "ecto.migrate --quiet", "test"],
+      test: [
+        "ecto.create --quiet",
+        "ecto.migrate --quiet",
+        "event_store.create --quiet",
+        "event_store.init --quiet",
+        "test"
+      ],
       "assets.deploy": ["esbuild default --minify", "phx.digest"],
       lint: ["format", "credo"]
     ]

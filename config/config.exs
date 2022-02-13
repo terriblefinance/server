@@ -8,7 +8,22 @@
 import Config
 
 config :terrible,
-  ecto_repos: [Terrible.Repo]
+  ecto_repos: [Terrible.Repo],
+  event_stores: [Terrible.EventStore],
+  commanded_default_consistency: :eventual
+
+config :terrible, Terrible.Commanded,
+  event_store: [
+    adapter: Commanded.EventStore.Adapters.EventStore,
+    event_store: Terrible.EventStore
+  ],
+  pub_sub: :local,
+  registry: :local
+
+config :terrible, Terrible.EventStore,
+  column_data_type: "jsonb",
+  serializer: EventStore.JsonbSerializer,
+  types: EventStore.PostgresTypes
 
 # Configures the endpoint
 config :terrible, TerribleWeb.Endpoint,
@@ -46,6 +61,10 @@ config :logger, :console,
 
 # Use Jason for JSON parsing in Phoenix
 config :phoenix, :json_library, Jason
+
+config :commanded, event_store_adapter: Commanded.EventStore.Adapters.EventStore
+
+config :commanded_ecto_projections, repo: Terrible.Repo
 
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.

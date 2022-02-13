@@ -9,9 +9,19 @@ config :terrible, Terrible.Repo,
   username: "postgres",
   password: "postgres",
   hostname: "localhost",
-  database: "terrible_test#{System.get_env("MIX_TEST_PARTITION")}",
-  pool: Ecto.Adapters.SQL.Sandbox,
+  database: "terrible_readstore_test",
   pool_size: 10
+
+config :terrible, Terrible.EventStore,
+  username: "postgres",
+  password: "postgres",
+  database: "terrible_eventstore_test",
+  hostname: "localhost"
+
+config :terrible, commanded_default_consistency: :strong
+
+config :commanded, Commanded.EventStore.Adapters.InMemory,
+  serializer: Commanded.Serialization.JsonSerializer
 
 # We don't run a server during test. If one is required,
 # you can enable the server option below.

@@ -8,6 +8,8 @@ defmodule Terrible.Application do
   @impl true
   def start(_type, _args) do
     children = [
+      # Start Commanded
+      Terrible.Commanded,
       # Start the Ecto repository
       Terrible.Repo,
       # Start the Telemetry supervisor

@@ -5,9 +5,15 @@ config :terrible, Terrible.Repo,
   username: "postgres",
   password: "postgres",
   hostname: "localhost",
-  database: "terrible_dev",
+  database: "terrible_readstore_dev",
   show_sensitive_data_on_connection_error: true,
   pool_size: 10
+
+config :terrible, Terrible.EventStore,
+  username: "postgres",
+  password: "postgres",
+  database: "terrible_eventstore_dev",
+  hostname: "localhost"
 
 # For development, we disable any cache and enable
 # debugging and code reloading.
