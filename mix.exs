@@ -64,6 +64,7 @@ defmodule Terrible.MixProject do
       {:swoosh, "1.6.2"},
       {:telemetry_metrics, "0.6.1"},
       {:telemetry_poller, "1.0.0"},
+      {:versioning, "0.4.1"},
       {:vex, "0.9.0"}
     ]
   end

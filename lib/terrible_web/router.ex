@@ -7,6 +7,8 @@ defmodule TerribleWeb.Router do
 
   scope "/api", TerribleWeb do
     pipe_through :api
+
+    resources "/books", BookController, except: [:new, :edit, :update, :delete]
   end
 
   # Enables LiveDashboard only for development

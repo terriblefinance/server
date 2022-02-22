@@ -11,7 +11,7 @@ defmodule Terrible.Domains.Grouping.Mutations.BookTest do
 
       {:ok, book} = BookMutation.create(attrs)
 
-      assert book.uuid
+      assert book.id
       assert book.name == "Test Budget"
     end
 

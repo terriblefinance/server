@@ -44,5 +44,6 @@ defmodule TerribleWeb.Endpoint do
   plug Plug.MethodOverride
   plug Plug.Head
   plug Plug.Session, @session_options
+  plug Versioning.Plug, schema: TerribleWeb.Versioning
   plug TerribleWeb.Router
 end
