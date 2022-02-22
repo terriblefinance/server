@@ -23,6 +23,7 @@ defmodule TerribleWeb.ConnCase do
       import Plug.Conn
       import Phoenix.ConnTest
       import TerribleWeb.ConnCase
+      import Terrible.Factories
 
       alias TerribleWeb.Router.Helpers, as: Routes
 

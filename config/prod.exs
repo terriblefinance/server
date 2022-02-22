@@ -11,6 +11,8 @@ import Config
 # before starting your production server.
 config :terrible, TerribleWeb.Endpoint, cache_static_manifest: "priv/static/cache_manifest.json"
 
+config :terrible, Terrible.Repo, migration_timestamps: [type: :utc_datetime_usec]
+
 # Do not print debug messages in production
 config :logger, level: :info
 
