@@ -9,7 +9,7 @@ defmodule Terrible.Domains.Grouping.Projections.Book do
 
   use Ecto.Schema
 
-  @primary_key {:uuid, :binary_id, autogenerate: false}
+  @primary_key {:id, :binary_id, autogenerate: false}
   @timestamps_opts [type: :utc_datetime_usec]
 
   schema "books" do
@@ -20,7 +20,7 @@ defmodule Terrible.Domains.Grouping.Projections.Book do
 
   @typedoc "Projection of a Book object"
   @type t :: %__MODULE__{
-          uuid: Ecto.UUID.t(),
+          id: Ecto.UUID.t(),
           name: String.t(),
           inserted_at: DateTime.t(),
           updated_at: DateTime.t()

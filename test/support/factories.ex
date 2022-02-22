@@ -14,7 +14,7 @@ defmodule Terrible.Factories do
 
   def book_factory do
     %Book{
-      uuid: UUID.uuid4(),
+      id: UUID.uuid4(),
       name: sequence(:name, &"budget-#{&1}")
     }
   end

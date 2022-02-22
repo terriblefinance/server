@@ -23,6 +23,7 @@ defmodule TerribleWeb do
 
       import Plug.Conn
       import TerribleWeb.Gettext
+      import Versioning.Controller
       alias TerribleWeb.Router.Helpers, as: Routes
     end
   end
@@ -36,6 +37,8 @@ defmodule TerribleWeb do
       # Import convenience functions from controllers
       import Phoenix.Controller,
         only: [get_flash: 1, get_flash: 2, view_module: 1, view_template: 1]
+
+      import Versioning.View
 
       # Include shared imports and aliases for views
       unquote(view_helpers())
@@ -63,7 +66,6 @@ defmodule TerribleWeb do
       # Import basic rendering functionality (render, render_layout, etc)
       import Phoenix.View
 
-      import TerribleWeb.ErrorHelpers
       import TerribleWeb.Gettext
       alias TerribleWeb.Router.Helpers, as: Routes
     end

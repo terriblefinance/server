@@ -14,7 +14,7 @@ defmodule Terrible.Domains.Grouping.Projectors.Book do
 
   project(%BookCreated{} = event, fn multi ->
     Multi.insert(multi, :book, %Book{
-      uuid: event.book_uuid,
+      id: event.book_uuid,
       name: event.name
     })
   end)

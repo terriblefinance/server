@@ -7,9 +7,9 @@ defmodule Terrible.Domains.Grouping.Queries.BookTest do
     test "with existing ID returns Book projection" do
       expected_book = insert(:book, %{name: "Test Budget"})
 
-      book = BookQuery.get(expected_book.uuid)
+      book = BookQuery.get(expected_book.id)
 
-      assert book.uuid == expected_book.uuid
+      assert book.id == expected_book.id
       assert book.name == "Test Budget"
     end
 
