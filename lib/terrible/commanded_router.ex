@@ -9,4 +9,6 @@ defmodule Terrible.CommandedRouter do
   """
 
   use Commanded.Commands.CompositeRouter
+
+  router(Terrible.Domains.Grouping.Router)
 end

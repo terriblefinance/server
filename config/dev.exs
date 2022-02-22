@@ -2,6 +2,7 @@ import Config
 
 # Configure your database
 config :terrible, Terrible.Repo,
+  migration_timestamps: [type: :utc_datetime_usec],
   username: "postgres",
   password: "postgres",
   hostname: "localhost",

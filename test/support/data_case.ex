@@ -24,6 +24,7 @@ defmodule Terrible.DataCase do
       import Ecto.Changeset
       import Ecto.Query
       import Terrible.DataCase
+      import Terrible.Factories
     end
   end
 

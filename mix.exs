@@ -51,6 +51,8 @@ defmodule Terrible.MixProject do
       {:ecto_sql, "3.7.2"},
       {:esbuild, "0.4.0", runtime: Mix.env() == :dev},
       {:eventstore, "1.3.2"},
+      {:ex_machina, "2.7.0", only: :test},
+      {:exconstructor, "1.2.6"},
       {:excoveralls, "0.14.4", only: :test},
       {:gettext, "0.19.1"},
       {:jason, "1.3.0"},
@@ -61,7 +63,8 @@ defmodule Terrible.MixProject do
       {:postgrex, "0.16.1"},
       {:swoosh, "1.6.2"},
       {:telemetry_metrics, "0.6.1"},
-      {:telemetry_poller, "1.0.0"}
+      {:telemetry_poller, "1.0.0"},
+      {:vex, "0.9.0"}
     ]
   end
 

@@ -10,6 +10,8 @@ defmodule Terrible.Application do
     children = [
       # Start Commanded
       Terrible.Commanded,
+      # Start domain supervisors
+      Terrible.Domains.Grouping.Supervisor,
       # Start the Ecto repository
       Terrible.Repo,
       # Start the Telemetry supervisor

@@ -32,8 +32,10 @@ defmodule Terrible.Storage do
   defp truncate_readstore_tables do
     """
     TRUNCATE TABLE
+      books,
       projection_versions
-    RESTART IDENTITY;
+    RESTART IDENTITY
+    CASCADE;
     """
   end
 end
